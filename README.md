@@ -4,5 +4,7 @@ The objective of this project is to create a simple object tracking, using a Kal
 
 
 
-https://github.com/GeraGzGm/Highway-Car-Counter/assets/52584370/984fcd57-6c0f-435b-b607-7ec0b97d6171
+
+
+https://github.com/GeraGzGm/Highway-Car-Counter/assets/52584370/aaf9f805-862f-4263-8501-06e6f74b2c32
 
