@@ -30,7 +30,7 @@ class Car_Counter():
         self.IMAGES = []
     
     def Save_Video(self):
-        clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(self.IMAGES, fps=15)
+        clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(self.IMAGES, fps=10)
         clip.write_videofile('output/my_video.mp4')
         
     def Draw_Circle(self, img: np.array, center: np.array, color: tuple) -> np.array:
