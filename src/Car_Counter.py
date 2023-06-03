@@ -5,6 +5,8 @@ import cv2
 import numpy as np
 from math import sqrt, pow
 
+import moviepy.video.io.ImageSequenceClip
+
 from Frame_Preprocessing import Frame_Preprocessing
 from Kalman_Fillter import KF
 
@@ -23,6 +25,12 @@ class Car_Counter():
         self.Cars_Right = []
         self.N_cars_Left = 0
         self.N_cars_Right = 0
+        
+        self.IMAGES = []
+    
+    def Save_Video(self):
+        clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(self.IMAGES, fps=15)
+        clip.write_videofile('output/my_video.mp4')
         
     def Draw_Circle(self, img: np.array, center: np.array, color: tuple) -> np.array:
         img = cv2.circle(img, (center[0],center[1]), 4, color, 2)
@@ -114,10 +122,17 @@ class Car_Counter():
             image = cv2.putText(image, text_Number_Cars, (30,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2, cv2.LINE_AA)
             text_Number_Cars = f"Number of cars: {self.N_cars_Right}"
             image = cv2.putText(image, text_Number_Cars, (900,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2, cv2.LINE_AA)
+              
+            saved_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            self.IMAGES.append(saved_img)
             
             cv2.imshow("YOLOv8 Inference", image)
             if cv2.waitKey(1) & 0xFF == ord('x'):
                 break
+        
+        self.Save_Video()
+        
+        
 
 def main(*args, **kwargs):
     CC = Car_Counter()
