@@ -3,7 +3,7 @@ import cv2
 
 class Frame_Preprocessing():
     Left_points = np.array([(0,290), (265, 215), (540, 385), (405,670)])
-    Right_points = np.array([(725,385), (995, 215), (1280, 290), (850,670)])
+    Right_points = np.array([ (1280, 290), (850,670), (725,385), (995, 215)])
     BGR_RED = (0,0,255)
     
     def __init__(self) -> None:
